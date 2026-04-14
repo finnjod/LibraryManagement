@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>Library</title></head>
+<body>
+
+  <h1>📚 Library</h1>
+  <p>Books found: {{ books|length }}</p>
+
+  <form method="POST" action="/">
+    <input type="text" name="search" value="{{ search }}" placeholder="Search by title or author..." />
+    <button type="submit">Search</button>
+    <a href="/">Clear</a>
+  </form>
+
+  {% if books %}
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Quantity</th>
+        <th>Genre</th>
+      </tr>
+      {% for book in books %}
+        <tr>
+          <td>{{ book[0] }}</td>
+          <td>{{ book[1] }}</td>
+          <td>{{ book[2] }}</td>
+          <td>{{ book[3] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No books found.</p>
+  {% endif %}
+
+</body>
+</html>
